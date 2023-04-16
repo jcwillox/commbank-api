@@ -50,7 +50,7 @@ def parse_account(data):
         "bsb": data["number"][:6],  # first 6 digits are the bsb.
         "number": data["number"][6:],  # rest are the account number.
         "balance": data["balance"][0]["amount"],
-        "available_balance": data["availableFunds"][0]["amount"],
+        "available_balance": data["availableFunds"][0]["amount"] if len(data["availableFunds"]) == 1 else 0,
         "link": data["link"]["url"],
     }
 
